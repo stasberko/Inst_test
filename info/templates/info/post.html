@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Post</title>
+</head>
+<body>
+<form action="#" method="POST">
+    <p>{{ form.author }}</p>
+    <p>{{ form.text }}</p>
+    <p>{{ form.likes }}</p>
+    <input type="submit" value="Submit"></buttom>
+</form>
+{% for post in posts %}
+    <h2>post.author</h2>
+    <br>
+    <p>post.text</p>
+    <p>post.likes</p>
+    <hr>
+{% empty %}
+    <h2>Sorry, empty</h2>
+{% endfor %}
+</body>
+</html>
