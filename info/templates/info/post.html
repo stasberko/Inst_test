@@ -8,17 +8,18 @@
     <title>Post</title>
 </head>
 <body>
-<form action="#" method="POST">
+<form action="" method="POST">
+    {% csrf_token %}
     <p>{{ form.author }}</p>
     <p>{{ form.text }}</p>
     <p>{{ form.likes }}</p>
     <input type="submit" value="Submit"></buttom>
 </form>
 {% for post in posts %}
-    <h2>post.author</h2>
+    <h2>{{ post.author }}</h2>
     <br>
-    <p>post.text</p>
-    <p>post.likes</p>
+    <p>{{post.text}}</p>
+    <p>{{post.likes}}</p>
     <hr>
 {% empty %}
     <h2>Sorry, empty</h2>

@@ -11,16 +11,16 @@ class Contact(models.Model):
 
     @staticmethod
     def init(count=2000, locale='en'):
-        from elizabeth import Generic, Text
-        from random import randint, choice
-        gen = Generic(locale)
+        from elizabeth import Personal, Text
+        gen = Personal(locale)
         text = Text(locale)
 
         for _ in range(count):
-            gen_post = Post(
-                author=choice(User.objects.all()),
-                text=text.text(5),
-                likes=randint(0, 100)
+            gen_post = Contact(
+                name=gen.name(),
+                num=gen.credit_card_number(),
+                some_blank=text.text(3),
+                some_null=gen.email()
             )
             gen_post.save()
 
@@ -32,6 +32,18 @@ class Contact(models.Model):
 class Parallel(models.Model):
     field1 = models.CharField(max_length=10)
     field2 = models.CharField(max_length=10)
+
+    @staticmethod
+    def init(count=2000, locale='en'):
+        from elizabeth import Generic, Text
+        text = Text(locale)
+
+        for _ in range(count):
+            gen_post = Parallel(
+                field1=text.word(),
+                field2=text.word(),
+            )
+            gen_post.save()
 
 
 class Post(models.Model):

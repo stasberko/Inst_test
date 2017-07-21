@@ -6,12 +6,9 @@ from .forms import PostForm
 
 def post(request):
     form = PostForm(request.POST or None)
-
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-    else:
-        posts = Post.objects.all()
-        context = {'posts': posts, 'form': form}
+    posts = Post.objects.select_related().all().order_by('-date')[:50]
+    if form.is_valid():
+        form.save()
+    context = {'posts': posts, 'form': form}
     return render(request, 'info/post.html', context=context)
 
