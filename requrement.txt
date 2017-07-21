@@ -1,0 +1,10 @@
+Django==1.11.3
+django-debug-toolbar==1.8
+django-jinja==2.3.1
+elizabeth==0.4.0
+Jinja2==2.9.6
+MarkupSafe==1.0
+mimesis==0.0.3
+pytz==2017.2
+sqlparse==0.2.3
+update==0.4.4
