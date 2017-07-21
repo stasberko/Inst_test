@@ -11,4 +11,3 @@ def post(request):
         form.save()
     context = {'posts': posts, 'form': form}
     return render(request, 'info/post.html', context=context)
-
