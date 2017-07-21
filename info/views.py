@@ -6,7 +6,7 @@ from .forms import PostForm
 
 def post(request):
     form = PostForm(request.POST or None)
-    posts = Post.objects.select_related().all().order_by('-date')[:50]
+    posts = Post.objects.select_related('author').values('text', 'likes', 'author__username').all().order_by('-date')[:50]
     if form.is_valid():
         form.save()
     context = {'posts': posts, 'form': form}
