@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'info',
     'debug_toolbar',
-    #TODO: Add djangoDT
+    'channels',
+
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,13 @@ STATIC_URL = '/static/'
 #Custom
 
 INTERNAL_IPS = '127.0.0.1'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('localhost', 6379)],
+        },
+        'ROUTING': 'rtm.routing.channel_routing',
+    }
+}
