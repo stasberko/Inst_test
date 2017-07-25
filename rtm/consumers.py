@@ -2,6 +2,7 @@ from channels.generic.websockets import WebsocketConsumer
 from .forms import Textf
 import json
 
+
 class MyConsumer(WebsocketConsumer):
     # Set to True to automatically port users from HTTP cookies
     # (you don't need channel_session_user, this implies it)
@@ -35,7 +36,7 @@ class MyConsumer(WebsocketConsumer):
         print(self.message.user)
         print(self.message.content)
         print(self.message.reply_channel.name)
-        self.send(json.dumps({'message': text}))
+        self.send(json.dumps({'message': text}, ensure_ascii=False))
 
     def disconnect(self, message, **kwargs):
         """
