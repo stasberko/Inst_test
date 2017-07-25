@@ -20,6 +20,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^info/', include('info.urls', namespace='std')),
+    url(r'^ws/', include('rtm.urls')),
 ]
 
 if settings.DEBUG:

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'info',
     'debug_toolbar',
     'channels',
+    'rtm',
+
 
 ]
 
