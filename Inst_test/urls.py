@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^info/', include('info.urls', namespace='std')),
     url(r'^ws/', include('rtm.urls')),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+
 ]
 
 if settings.DEBUG:

@@ -1,2 +1,4 @@
 .idea
 inst
+Будет удалено rtm/__pycache__/
+Будет удалено rtm/migrations/__pycache__/

@@ -37,12 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #Standart db & debug
     'info',
     'debug_toolbar',
+    #Channels
     'channels',
     'rtm',
-
-
+    #REST
+    'oauth2_provider',
+    'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +57,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ###
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Inst_test.urls'
@@ -128,16 +134,25 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-#Custom
+###########################################
 
 INTERNAL_IPS = '127.0.0.1'
 
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'asgi_redis.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [('localhost', 6379)],
-        },
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        # 'BACKEND': 'asgi_redis.RedisChannelLayer',
+        # 'CONFIG': {
+        #     'hosts': [('localhost', 6379)],
+        # },
         'ROUTING': 'rtm.routing.channel_routing',
     }
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    )
+}
+
+CORS_ORIGIN_ALLOW_ALL = True
