@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'channels',
     'rtm',
     #REST
-    'oauth2_provider',
-    'corsheaders',
     'rest_framework',
 ]
 
@@ -149,10 +147,3 @@ CHANNEL_LAYERS = {
     }
 }
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
-    )
-}
-
-CORS_ORIGIN_ALLOW_ALL = True
